@@ -16,7 +16,9 @@ public class SampleController {
 	private MyBean mybean;
     @RequestMapping("/")
     @ResponseBody
-    String home() {
+    String home() throws InterruptedException {
+    	System.out.println("线程休眠");
+    	System.out.println("线程结束休眠");
         return mybean.getName();
     }
 
