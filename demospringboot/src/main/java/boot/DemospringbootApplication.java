@@ -1,5 +1,7 @@
 package boot;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @EnableAutoConfiguration
 public class DemospringbootApplication {
-
+	protected static  final Log logger = LogFactory.getLog(DemospringbootApplication.class);
     public static void main(String[] args) {
     	SpringApplication app = new SpringApplication(DemospringbootApplication.class);
     	app.addListeners(new ApplicationListener<ApplicationPreparedEvent>(){
@@ -22,7 +24,7 @@ public class DemospringbootApplication {
 
 			@Override
 			public void onApplicationEvent(ApplicationPreparedEvent event) {
-				System.out.println("ApplicationPreparedEvent收到");
+				logger.debug("ApplicationPreparedEvent收到");
 			}
     		
 
