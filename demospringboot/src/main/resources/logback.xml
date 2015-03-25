@@ -13,33 +13,43 @@
 
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
 			by default -->
-	 <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-      <layout class="ch.qos.logback.classic.html.HTMLLayout">
-        <pattern>%d{HH:mm:ss.SSS} thread%mdc%level%logger%msg</pattern>
-      </layout>
-    </encoder>
-    <file>test.html</file>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.classic.html.HTMLLayout">
+				<pattern>%d{HH:mm:ss.SSS} thread%mdc%level%logger%msg</pattern>
+			</layout>
+		</encoder>
+		<file>test.html</file>
 	</appender>
 
-	<appender name="RFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>logFile.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <!-- daily rollover -->
-      <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+	<appender name="RFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logFile.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
 
-      <!-- keep 30 days' worth of history -->
-      <maxHistory>30</maxHistory>
-    </rollingPolicy>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
 
-    <encoder>
-      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
-    </encoder>
-  </appender> 
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
 
 
-	<root level="DEBUG">
+	<logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
-<!-- 		<appender-ref ref="FILE" /> -->
-<!-- 		<appender-ref ref="RFILE" /> -->
+	</logger>
+
+	<logger name="org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl"
+		level="TRACE" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<!-- <appender-ref ref="FILE" /> -->
+		<!-- <appender-ref ref="RFILE" /> -->
 	</root>
 </configuration>

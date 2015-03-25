@@ -1,1 +1,5 @@
+boot\TestLog4j.class
+mysql\LoadDriver.class
+boot\TestLog.class
+boot\TestLogback.class
 boot\DemospringbootApplicationTests.class
