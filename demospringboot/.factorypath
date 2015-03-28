@@ -1,0 +1,5 @@
+<factorypath>
+    <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="D:\java\hibernate-release-4.3.7.Final\jpa\hibernate-jpa-2.1-api-1.0.0.Final.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="D:\java\hibernate-release-4.3.7.Final\jpa\hibernate-jpamodelgen-4.3.7.Final.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import boot.jpa.Customer;
 import boot.jpa.CustomerRepository;
+import boot.jpa.Customer_;
 import boot.jpa.User;
 import boot.jpa.UserRepositoryCustom;
 
@@ -67,10 +68,10 @@ public class CustomerController {
 	@RequestMapping("/customer/findspecification")
 	@ResponseBody
 	public Object findspecification(String firstName) {
-		List<Customer> list = customerRepository.findAll((Root<Customer> root,
-				CriteriaQuery<?> query, CriteriaBuilder cb) -> {
-					Path<String> path = root.get("firstName");
-					Path<String> path2 = root.get("lastName");
+		List<Customer> list = customerRepository.findAll(( root,
+			query, cb) -> {
+					Path<String> path = root.get(Customer_.firstName);
+					Path<String> path2 = root.get(Customer_.lastName);
 					Predicate predicate = cb.like(path, "林%");
 					Predicate predicate2 = cb.like(path2, "龙灯");
 					return cb.and(predicate, predicate2);
